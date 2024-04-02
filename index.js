@@ -7,12 +7,14 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// connect to the DB
-mongoose.connect(process.env.DB_CONNECT)
-
 //import routes
 const authRoute = require('./routes/auth');
 
+// connect to the DB
+mongoose.connect(process.env.DB_CONNECT)
+
+//middleware
+app.use(express.json());
 //Route middlewares
 app.use('/api/user', authRoute)
 
